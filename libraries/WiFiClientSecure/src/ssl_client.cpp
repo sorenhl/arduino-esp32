@@ -139,9 +139,12 @@ int start_ssl_client(sslclient_context *ssl_client, const char *host, uint32_t p
             else return -1;
             psk[j/2] |= c;
         }
+		#if defined(MBEDTLS_KEY_EXCHANGE__SOME__PSK_ENABLED)
         // set mbedtls config
         ret = mbedtls_ssl_conf_psk(&ssl_client->ssl_conf, psk, psk_len,
                  (const unsigned char *)pskIdent, strlen(pskIdent));
+		#else		ret = -1;		#endif		
+		
         if (ret != 0) {
             log_e("mbedtls_ssl_conf_psk returned %d", ret);
             return handle_error(ret);
