@@ -147,7 +147,6 @@ set(COMPONENT_ADD_INCLUDEDIRS
   libraries/ArduinoOTA/src
   libraries/AsyncUDP/src
   libraries/AzureIoT/src
-  libraries/BLE/src
   libraries/BluetoothSerial/src
   libraries/DNSServer/src
   libraries/ESP32/src
